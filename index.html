@@ -22,13 +22,13 @@
 				<ul class="todo-list">
 					<!-- These are here just to show the structure of the list items -->
 					<!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
-					<li v-for="(index,todo) in todos" :class="{completed:todo.completed}">
+					<li v-for="(index,todo) in todos" :class="{completed:todo.completed,editing:todo == editedTodo}">
 						<div class="view">
 							<input class="toggle" type="checkbox" v-model="todo.completed">
-							<label>{{todo.content}}</label>
+							<label @dblclick="editTodo(todo)">{{todo.content}}</label>
 							<button class="destroy" @click="removeTodo(index)"></button>
 						</div>
-						<input class="edit" value="Create a TodoMVC template">
+						<input class="edit" v-model="todo.content" v-focus="todo == editedTodo" >
 					</li>
 
 				</ul>

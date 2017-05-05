@@ -15,8 +15,8 @@ new Vue({
       {
         content: 'vues',
         completed: false
-      }
-    ]
+      }],
+      editedTodo: null
   },
   methods:{
     addTodo(){
@@ -28,6 +28,9 @@ new Vue({
     },
     removeTodo(index){
       this.todos.splice(index,1)
+    },
+    editTodo(todo){
+      this.editedTodo = todo
     }
   }
 })
